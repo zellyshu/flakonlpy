@@ -1,0 +1,109 @@
+<!doctype html>
+
+<!--
+       ____     ___                 __  __              __  __      __         ____
+    /\  _`\  /\_ \               /\ \/\ \            /\ \/\ \    /\ \       /\  _`\
+    \ \ \L\_\\//\ \       __     \ \ \/'/'     ___   \ \ `\\ \   \ \ \      \ \ \L\ \ __  __
+     \ \  _\/  \ \ \    /'__`\    \ \ , <     / __`\  \ \ , ` \   \ \ \  __  \ \ ,__//\ \/\ \
+      \ \ \/    \_\ \_ /\ \L\.\_   \ \ \\`\  /\ \L\ \  \ \ \`\ \   \ \ \L\ \  \ \ \/ \ \ \_\ \
+       \ \_\    /\____\\ \__/.\_\   \ \_\ \_\\ \____/   \ \_\ \_\   \ \____/   \ \_\  \/`____ \
+        \/_/    \/____/ \/__/\/_/    \/_/\/_/ \/___/     \/_/\/_/    \/___/     \/_/   `/___/> \
+                                                                                          /\___/
+                                                                                          \/__/
+     Copyright © 2020  Zellyshu. All rights reserved
+-->
+
+<html lang="en-US">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <!-- Custom Css -->
+    <!--<link rel="stylesheet" href="style.css" type="text/css" />-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <!-- Ionic icons -->
+    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <title>Tagging Page</title>
+  </head>
+
+  <body>
+
+  <!-- N A V B A R -->
+  <nav class="navbar navbar-default navbar-expand-lg fixed-top custom-navbar">
+    <div class="col-md-10 col-xs-12">
+        <!--<img src="images/kgu_logo.jpg" class="img-fluid nav-logo-desktop">-->
+<!--        <img src="{{ url_for('static', filename='img/kgu_logo.jpg') }}">-->
+    </div>
+    <div class="col-md-2 col-xs-12">
+      	<!--<img src="images/ICL_Logo_design_02.png" class="img-fluid nav-logo-desktop">-->
+<!--        <img src="{{ url_for('static', filename='img/ICL_Logo.png') }}">-->
+    </div>
+  </nav>
+  <!-- E N D  N A V B A R -->
+  
+  <!-- H E R O -->
+  <section id="hero">
+    <div class="container" style="margin: auto;">
+      <form action="{{ url_for('input_text') }}"  method="POST" style="margin: auto;">
+      <div class="sentence">
+        <div class="btn-group">
+          <input type="button" name="select_btn" value="Kkma" class="btn btn-regular">
+          <input type="button" name="select_btn" value="Komoran" class="btn btn-regular">
+          <input type="button" name="select_btn" value="Hannanum" class="btn btn-regular">
+          <input type="button" name="select_btn" value="Mecab" class="btn btn-regular">
+          <input type="button" name="select_btn" value="Okt" class="btn btn-regular">
+        </div>
+          <input type="hidden" id="selectVar" name="select_btn" value="">
+          <input type="text" name="text" style="width: 90%;">
+          <input type="submit" name="generation" value="Analysis" style="float: right;">
+      </div></form><br><br>
+      <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+          <h1>분석 결과</h1><br>
+          <div id="output">
+            <textarea style="width: 100%; height: 500px;" name="output" readonly>{% for con in output %}
+{{ con }}{% endfor %}</textarea>
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        </div>
+        </div>
+    </div>
+  </section>
+  <!-- E N D  H E R O -->
+
+  <!--  F O O T E R  -->
+  <footer>
+    <div class="container">
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <p></p>
+        </div>
+        <div class="col-md-6 col-xs-12">
+          <small>2020 &copy; All rights reserved. Made by <a href="https://zellyshu.github.io/" target="blank" class="external-links">Zellyshu</a></small>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--  E N D  F O O T E R  -->
+
+
+    <!-- External JavaScripts -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/btnactive.js') }}"></script>
+  </body>
+</html>
